@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     ruby_deep_clone (0.6.0)
 
