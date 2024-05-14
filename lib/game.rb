@@ -15,12 +15,12 @@ class Game
     puts "Welcome to the Ruby chess!"
     puts
     puts " * To move a figure from a2 to a4 type 'a2a4'"
-    
+
     set_figures
     move_counter = 0
-    
+
     loop do
-      @table.print_table      
+      @table.print_table
       player = move_counter % 2 == 0 ? @player1 : @player2
 
       if is_chess?(player.color)
@@ -34,8 +34,8 @@ class Game
         print "#{player} please enter your move: "
       end
 
-      c1, c2 = parse_move(player.perform_move)  
-      
+      c1, c2 = parse_move(player.perform_move)
+
       begin
         @table.move(c1, c2)
         move_counter += 1
@@ -52,7 +52,7 @@ class Game
   end
 
   private
-  def is_checkmate?(color)    
+  def is_checkmate?(color)
     @table.get_fields_where_are_figures_of(color).each do |f1|
       fig   = f1.figure
       start = f1.coords
@@ -66,14 +66,14 @@ class Game
     end
     true
   end
-  
+
   def is_chess?(color)
     figs = @table.get_fields_where_are_figures_of(
            color==:white ? :black : :white)
     king = @table.get_field_where_king_of(color)
     figs.any? { |f| f.figure.transition_legal?(@table, f.coords, king.coords) }
   end
-  
+
   def parse_move(move)
     c1 = ChessCoords.new(move[0], move[1].to_i)
     c2 = ChessCoords.new(move[2], move[3].to_i)
@@ -103,10 +103,5 @@ class Game
         @table.put(Pawn.new(color), ChessCoords.new(l, row2))
       end
     end
-  end  
+  end
 end
-
-p1 = Player.new(:white)
-p2 = Player.new(:black)
-g  = Game.new(p1, p2)
-g.play

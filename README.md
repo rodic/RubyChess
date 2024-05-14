@@ -1,9 +1,20 @@
-Ruby Chess
-==========
+# Ruby Chess
 
 Simple command line chess for two players
 
-![chess.png](https://raw.githubusercontent.com/Rodic/RubyChess/master/img/ruby_chess.png)
+![chess.png](img/ruby_chess.png)
+
+## Install
+
+```
+$ bundle install
+```
+
+## Run game
+
+```
+$ ./main.rb
+```
 
 TODO:
 -----
